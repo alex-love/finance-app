@@ -8,6 +8,7 @@
       "<rootDir>src/setupTests.js"
     ]
   },
+  "homepage": "https://alex-love.github.io/finance-app",
   "dependencies": {
     "braces": "^2.3.2",
     "chart.js": "^1.1.1",
@@ -21,7 +22,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject",
-    "test": "jest"
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,9 +37,7 @@
   "devDependencies": {
     "@babel/core": "^7.4.0",
     "@babel/preset-env": "^7.4.2",
-    "babel-jest": "^24.5.0",
-    "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.11.2",
-    "jest": "^24.5.0"
+    "gh-pages": "^2.0.1"
   }
 }
