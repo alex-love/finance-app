@@ -1,13 +1,13 @@
 {
   "main.css": "/finance-app/static/css/main.e568a88c.chunk.css",
-  "main.js": "/finance-app/static/js/main.4fc7a810.chunk.js",
-  "main.js.map": "/finance-app/static/js/main.4fc7a810.chunk.js.map",
+  "main.js": "/finance-app/static/js/main.bfd82522.chunk.js",
+  "main.js.map": "/finance-app/static/js/main.bfd82522.chunk.js.map",
   "runtime~main.js": "/finance-app/static/js/runtime~main.acf1cc66.js",
   "runtime~main.js.map": "/finance-app/static/js/runtime~main.acf1cc66.js.map",
   "static/js/2.facaa632.chunk.js": "/finance-app/static/js/2.facaa632.chunk.js",
   "static/js/2.facaa632.chunk.js.map": "/finance-app/static/js/2.facaa632.chunk.js.map",
   "index.html": "/finance-app/index.html",
-  "precache-manifest.02bd04a0caf21ed4ae84d42b335ef489.js": "/finance-app/precache-manifest.02bd04a0caf21ed4ae84d42b335ef489.js",
+  "precache-manifest.6b6a4b87de8edd62bea51698bda6fd61.js": "/finance-app/precache-manifest.6b6a4b87de8edd62bea51698bda6fd61.js",
   "service-worker.js": "/finance-app/service-worker.js",
   "static/css/main.e568a88c.chunk.css.map": "/finance-app/static/css/main.e568a88c.chunk.css.map",
   "static/media/logo.svg": "/finance-app/static/media/logo.5d5d9eef.svg"

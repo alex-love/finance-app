@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "6dd99991b0d5f0b73c3e",
+    "revision": "05c4c77de74da03b493a",
     "url": "/finance-app/static/css/main.e568a88c.chunk.css"
   },
   {
-    "revision": "6dd99991b0d5f0b73c3e",
-    "url": "/finance-app/static/js/main.4fc7a810.chunk.js"
+    "revision": "05c4c77de74da03b493a",
+    "url": "/finance-app/static/js/main.bfd82522.chunk.js"
   },
   {
     "revision": "80f0166613611e5213d9",
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/finance-app/static/media/logo.5d5d9eef.svg"
   },
   {
-    "revision": "f0b9110a141abdc1d58e2ee2c0d34af5",
+    "revision": "5c1ccce31b4dcd6c802733b2909e2ec2",
     "url": "/finance-app/index.html"
   }
 ];
