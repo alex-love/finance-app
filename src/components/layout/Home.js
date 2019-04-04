@@ -13,7 +13,7 @@ export default class Home extends Component {
                             <h5 className="header col s12 light">A set of tools and visualizations to see your investments and the projection of your financial obligations.</h5>
                         </div>
                         <div className="row center">
-                            <Link to="/finance-app/compound-interest-calculator" id="download-button" className="btn-large waves-effect waves-light green">Try Calculator</ Link>
+                            <a href="/finance-app/compound-interest-calculator" id="download-button" className="btn-large waves-effect waves-light green">Try Calculator</ a>
                         </div>
 
 
