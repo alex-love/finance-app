@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/finance-app/precache-manifest.c798b06aca5fd40eb97329edab2bf37c.js"
+  "/finance-app/precache-manifest.a22e3daf9c882d0158e42401a923b563.js"
 );
 
 workbox.clientsClaim();
