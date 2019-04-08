@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-var LineChart = require("react-chartjs").Line;
+import {Line} from 'react-chartjs-2'
 
 class Graph extends Component {
   constructor(props) {
@@ -11,12 +11,29 @@ class Graph extends Component {
         datasets: [
           {
             label: "My First dataset",
-            fillColor: "rgba(220,220,220,0.2)",
+            /* fillColor: "rgba(220,220,220,0.2)",
             strokeColor: "rgba(220,220,220,1)",
             pointColor: "rgba(220,220,220,1)",
             pointStrokeColor: "#fff",
             pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(220,220,220,1)",
+            pointHighlightStroke: "rgba(220,220,220,1)", */
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: 'rgba(75,192,192,0.4)',
+            borderColor: 'rgba(75,192,192,1)',
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: 'rgba(75,192,192,1)',
+            pointBackgroundColor: '#fff',
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+            pointHoverBorderColor: 'rgba(220,220,220,1)',
+            pointHoverBorderWidth: 2,
+            pointRadius: 1,
+            pointHitRadius: 10,
             data: [0]
           },
         ]
@@ -33,7 +50,7 @@ class Graph extends Component {
   handleChange(event) {
     event.preventDefault();
     const name = event.target.name;
-    switch(name){
+   /*  switch(name){ turns out this was dumb and overly complicating things... at least I thought it looked cool
       case 'startingAmount':
         this.setState({startingAmount: event.target.value})
         
@@ -47,11 +64,16 @@ class Graph extends Component {
         break;
       default:
         break;
-    }
+    } */
+    this.setState({ [event.target.name]: event.target.value });
+    console.log(` ir: ${this.state.interestRate} years:${this.state.years} startingAmount:${this.state.startingAmount}`)
     let tmp = this.state.data;
-    tmp.datasets[0].data = this.calculateInterest(Number(this.state.startingAmount), Number(this.state.years),Number(this.state.interestRate))
-    this.setState({data: tmp})
+    let newData = tmp.datasets[0].data
+    newData = this.calculateInterest(Number(this.state.startingAmount), Number(this.state.years),Number(this.state.interestRate))
+    this.setState({finalAmount: newData})
+    this.setState({data: newData})
     this.updateLabel(this.state.years)
+    console.log("button pressed")
     
   }
     //basically just need to copy data object and add my new array to it...
@@ -88,12 +110,12 @@ class Graph extends Component {
 
   render() {
     const { data } = this.state.data.datasets[0]
-    const { years } = this.state
+    const { years, finalAmount } = this.state
     return (
-      <div>
-        <LineChart data={this.state.data} width="600" height="250" />
-        <div className="col m12 s12">
-          <form action="#">
+      <div >
+        <Line data={this.state.data} width="400" height="200"  />
+        <div className="col m8 s8">
+          <form onSubmit={this.handleChange}>
             <p className="range-field">
             Interest Rate: {this.state.interestRate} %
               <input type="range" name="interestRate" min="0" max="100" value={this.state.interestRate} onChange={this.handleChange} />
@@ -106,9 +128,10 @@ class Graph extends Component {
             Years:
               <input type="number" name="years" min="0" value={this.state.years} onChange={this.handleChange} />
             </p>
+            <button type="submit" name="submit" className="waves-effect btn">Submit</button>
           </form>
           <h4>Results:</h4>
-          <p>After {years} years, with a principal investment of {this.state.startingAmount}, you will have {data[years]}</p>
+          <p>After {years} years, with a principal investment of ${Number(this.state.startingAmount).toFixed(2)}, you will have ${Number(finalAmount[finalAmount.length -1]).toFixed(2)}</p>
         </div>
       </div>
     )
@@ -147,7 +170,7 @@ export default class Calculator extends Component {
         <div className='container'>
           <div className="section">
             <div className="row">
-              <div className="col s12 m6">
+              <div className="col s12 m12">
                 <Graph data={data} />
                 
               </div>

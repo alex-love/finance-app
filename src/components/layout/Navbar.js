@@ -6,7 +6,7 @@ class Navbar extends Component {
         return (
             <div>
                 <nav className="green" role="navigation">
-                    <div className="nav-wrapper container"><Link id="logo-container" to="/finance-app" className="brand-logo">Logo</Link>
+                    <div className="nav-wrapper container"><Link id="logo-container" to="/" className="brand-logo">Logo</Link>
                         <ul className="right hide-on-med-and-down">
                             <li><a href="#">Navbar Link</a></li>
                         </ul>

@@ -9,8 +9,8 @@ export default class Main extends Component {
         return (
       <div>
           <Switch>
-              <Route path='/finance-app' component={Home}/>
-              <Route path='/finance-app/compound-interest-calculator' component={Calculator} />
+              <Route exact path='/' component={Home}/>
+              <Route path='/compound-interest-calculator' component={Calculator} />
           </Switch>
       </div>
         )

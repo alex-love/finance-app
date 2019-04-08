@@ -11,9 +11,18 @@ export default class Home extends Component {
                         <h1 className="header center green-text">Portfolio App</h1>
                         <div className="row center">
                             <h5 className="header col s12 light">A set of tools and visualizations to see your investments and the projection of your financial obligations.</h5>
+                            <div className=" col s12 light">  
+                                <h6 >This project is still in development. I will be adding: </h6>
+                                <ul>
+                                    <li>Account system/authentication</li>
+                                    <li>Comprehensize portfolio consolidation dashboard with the option to add assetts/liabilities</li>
+                                </ul>
+                            
+                            </div>
+                          
                         </div>
                         <div className="row center">
-                            <a href="/finance-app/compound-interest-calculator" id="download-button" className="btn-large waves-effect waves-light green">Try Calculator</ a>
+                            <Link to="/compound-interest-calculator" id="download-button" className="btn-large waves-effect waves-light green">Try Calculator</ Link>
                         </div>
 
 
