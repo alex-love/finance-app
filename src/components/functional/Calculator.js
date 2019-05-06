@@ -10,7 +10,7 @@ class Graph extends Component {
         labels: ["1", "2", "3"],
         datasets: [
           {
-            label: "My First dataset",
+            label: "Savings",
             /* fillColor: "rgba(220,220,220,0.2)",
             strokeColor: "rgba(220,220,220,1)",
             pointColor: "rgba(220,220,220,1)",
@@ -34,7 +34,7 @@ class Graph extends Component {
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
-            data: [0]
+            data: []
           }
         ]
       },
@@ -47,40 +47,49 @@ class Graph extends Component {
     this.calculateInterest = this.calculateInterest.bind(this);
   }
 
-  handleChange = async event => {
+  handleChange = event => {
     event.preventDefault();
-    const name = event.target.name;
-
-    await this.setState({ [event.target.name]: event.target.value });
-    console.log(
-      ` ir: ${this.state.interestRate} years:${
-        this.state.years
-      } startingAmount:${this.state.startingAmount}`
-    );
-    let tmp = this.state.data;
-    let newData = tmp.datasets[0].data;
-    newData = await this.calculateInterest(
-      Number(this.state.startingAmount),
-      Number(this.state.years),
-      Number(this.state.interestRate)
-    );
-    await this.setState({ finalAmount: newData });
-    await this.setState({ data: newData });
-    await this.updateLabel(this.state.years);
-    console.log("button pressed");
+    this.setState({ [event.target.name]: event.target.value }, async () => {
+      console.log(
+        ` ir: ${this.state.interestRate} years:${
+          this.state.years
+        } startingAmount:${this.state.startingAmount}`
+      );
+      const { startingAmount, years, interestRate } = this.state;
+      let tmp = this.state.data;
+      let newData = tmp.datasets[0].data;
+      newData = await this.calculateInterest(
+        Number(startingAmount),
+        Number(years),
+        Number(interestRate)
+      );
+      await this.updateLabel(years);
+      this.updateData(newData);
+    });
   };
-  //basically just need to copy data object and add my new array to it...
+
   //create copy of data from state
   //update labels array with correct labels based on number of years
   //set state with new copy of data
   updateLabel(years) {
-    let tmp = this.state.data; //create copy of data
+    let tmp = { ...this.state.data };
     let newArray = [];
-    for (let i = 1; i < years + 1; i++) {
-      newArray.push(i);
+    for (let i = 0; i < years; i++) {
+      newArray.push(i + 1);
     }
     tmp.labels = newArray;
     this.setState({ data: tmp });
+  }
+
+  updateData(newData) {
+    let tmp = { ...this.state.data };
+    console.log(tmp);
+    tmp.datasets[0].data = newData;
+    console.log(`tmp after: ${tmp.datasets.data}`);
+    this.setState(prevState => {
+      return { data: tmp, finalAmount: prevState.data.datasets[0].data.pop() };
+    });
+    console.log(this.state.data);
   }
 
   //A = P (1 + r/n)^(nt) -> assumes yearly compounding for now
@@ -148,7 +157,7 @@ class Graph extends Component {
           <p>
             After {years} years, with a principal investment of $
             {Number(this.state.startingAmount).toFixed(2)}, you will have $
-            {Number(finalAmount[finalAmount.length - 1]).toFixed(2)}
+            {finalAmount.toFixed(2)}
           </p>
         </div>
       </div>
