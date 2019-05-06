@@ -113,9 +113,39 @@ class Graph extends Component {
   render() {
     const { data } = this.state.data.datasets[0];
     const { years, finalAmount } = this.state;
+
+    const chartOptions = {
+      title: {
+        display: true,
+        text: "Compound Interest Calculator with annual compounding"
+      },
+      scales: {
+        xAxes: [
+          {
+            scaleLabel: {
+              display: true,
+              labelString: "Years"
+            }
+          }
+        ],
+        yAxes: [
+          {
+            scaleLabel: {
+              display: true,
+              labelString: "Money"
+            }
+          }
+        ]
+      }
+    };
     return (
       <div>
-        <Line data={this.state.data} width={400} height={200} />
+        <Line
+          data={this.state.data}
+          width={400}
+          height={200}
+          options={chartOptions}
+        />
         <div className="col m8 s8">
           <form onSubmit={this.handleChange}>
             <p className="range-field">

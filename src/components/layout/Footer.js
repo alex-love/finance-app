@@ -16,6 +16,7 @@ export default class Footer extends Component {
                   blog/personal website{" "}
                   <a
                     rel="noopener noreferrer"
+                    style={{ color: "yellow" }}
                     href="https://alex-love.github.io"
                     target="_blank"
                   >
