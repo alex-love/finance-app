@@ -26,7 +26,7 @@ export default class Home extends Component {
                 </ul>
               </div>
             </div>
-            <div className="row center">
+            <div className="row center" style={{ marginBottom: "20%" }}>
               <Link
                 to="/compound-interest-calculator"
                 id="download-button"
