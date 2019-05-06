@@ -21,7 +21,7 @@ export default class Home extends Component {
                   <li>Account system/authentication</li>
                   <li>
                     Comprehensize portfolio consolidation dashboard with the
-                    option to add assetts/liabilities
+                    option to add assets/liabilities
                   </li>
                 </ul>
               </div>

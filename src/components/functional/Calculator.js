@@ -50,11 +50,6 @@ class Graph extends Component {
   handleChange = event => {
     event.preventDefault();
     this.setState({ [event.target.name]: event.target.value }, async () => {
-      console.log(
-        ` ir: ${this.state.interestRate} years:${
-          this.state.years
-        } startingAmount:${this.state.startingAmount}`
-      );
       const { startingAmount, years, interestRate } = this.state;
       let tmp = this.state.data;
       let newData = tmp.datasets[0].data;
@@ -83,13 +78,10 @@ class Graph extends Component {
 
   updateData(newData) {
     let tmp = { ...this.state.data };
-    console.log(tmp);
     tmp.datasets[0].data = newData;
-    console.log(`tmp after: ${tmp.datasets.data}`);
     this.setState(prevState => {
       return { data: tmp, finalAmount: prevState.data.datasets[0].data.pop() };
     });
-    console.log(this.state.data);
   }
 
   //A = P (1 + r/n)^(nt) -> assumes yearly compounding for now
@@ -97,16 +89,11 @@ class Graph extends Component {
     var yearlyValue = [];
     ir = 1 + ir / 100;
     yearlyValue[0] = principal;
-    console.log(
-      `Inputs: principal: ${typeof principal} years: ${years} interest rate: ${ir}`
-    );
     for (let i = 1; i < years + 1; i++) {
       let value = yearlyValue[i - 1]; //P_sub_i-1
-      console.log(`Value: ${value}`);
       let yearlyTotal = value * ir;
       yearlyValue.push(yearlyTotal);
     }
-    console.log(yearlyValue);
     return yearlyValue;
   }
 
