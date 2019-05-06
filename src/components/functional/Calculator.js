@@ -47,11 +47,11 @@ class Graph extends Component {
     this.calculateInterest = this.calculateInterest.bind(this);
   }
 
-  handleChange(event) {
+  handleChange = async event => {
     event.preventDefault();
     const name = event.target.name;
 
-    this.setState({ [event.target.name]: event.target.value });
+    await this.setState({ [event.target.name]: event.target.value });
     console.log(
       ` ir: ${this.state.interestRate} years:${
         this.state.years
@@ -59,16 +59,16 @@ class Graph extends Component {
     );
     let tmp = this.state.data;
     let newData = tmp.datasets[0].data;
-    newData = this.calculateInterest(
+    newData = await this.calculateInterest(
       Number(this.state.startingAmount),
       Number(this.state.years),
       Number(this.state.interestRate)
     );
-    this.setState({ finalAmount: newData });
-    this.setState({ data: newData });
-    this.updateLabel(this.state.years);
+    await this.setState({ finalAmount: newData });
+    await this.setState({ data: newData });
+    await this.updateLabel(this.state.years);
     console.log("button pressed");
-  }
+  };
   //basically just need to copy data object and add my new array to it...
   //create copy of data from state
   //update labels array with correct labels based on number of years
